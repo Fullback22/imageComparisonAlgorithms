@@ -1,5 +1,6 @@
 #pragma once
 #include "MSE.h"
+#include "PSNR.h"
 class Creator
 {
 public:
@@ -7,6 +8,12 @@ public:
 };
 
 class CreatorMse : public Creator
+{
+public:
+	IImageQualityEstimate* estiamteCreate() override;
+};
+
+class CreatorPsnr : public Creator
 {
 public:
 	IImageQualityEstimate* estiamteCreate() override;

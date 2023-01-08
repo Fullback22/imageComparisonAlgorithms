@@ -3,10 +3,8 @@
 class MSE :
     public IImageQualityEstimate
 {
-    cv::Mat masterImage_{};
-
-   
 protected:
+    cv::Mat masterImage_{};
     ~MSE();
 public:
     MSE();

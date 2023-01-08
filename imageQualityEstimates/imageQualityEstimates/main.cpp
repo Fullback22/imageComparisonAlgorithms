@@ -6,6 +6,7 @@
 #include <list>
 
 #include "MSE.h"
+#include "PSNR.h"
 #include "Creator.h"
 
 #include "Params.h"
@@ -13,14 +14,14 @@ int main()
 {
     Params parm;
     CreatorMse creatorMse{};
-    std::vector<CreatorMse*> creators{ &creatorMse };
+    CreatorPsnr creatorPsnr{};
+    std::vector<Creator*> creators{ &creatorMse, &creatorPsnr };
     std::list<IImageQualityEstimate*> estimates;
 
     for (const auto creator:creators)
     {
         estimates.push_back(creator->estiamteCreate());
     }
-
 
     for (const auto estiamte : estimates)
     {

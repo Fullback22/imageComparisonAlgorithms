@@ -145,12 +145,14 @@
     <ClCompile Include="Creator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MSE.cpp" />
+    <ClCompile Include="PSNR.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Creator.h" />
     <ClInclude Include="IImageQualityEstimates.h" />
     <ClInclude Include="MSE.h" />
     <ClInclude Include="Params.h" />
+    <ClInclude Include="PSNR.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
