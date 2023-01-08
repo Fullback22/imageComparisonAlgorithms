@@ -12,7 +12,7 @@ public:
 	IImageQualityEstimate& operator= (const IImageQualityEstimate&) = delete;
 	virtual void Delete() = 0;
 
-	virtual float estimate(const cv::Mat& test) = 0;
+	virtual double estimate(const cv::Mat& test) = 0;
 	virtual void setMasterImage(const cv::Mat& master) = 0;
 };
 

@@ -18,11 +18,11 @@ void MSE::setMasterImage(const cv::Mat& master)
 	master.copyTo(masterImage_);
 }
 
-float MSE::estimate(const cv::Mat& test)
+double MSE::estimate(const cv::Mat& test)
 {
 	if (test.size() == masterImage_.size())
 	{
-		float sum{};
+		double sum{};
 		for (size_t i{}; i < masterImage_.size().width; ++i)
 		{
 			for (size_t j{}; j < masterImage_.size().height; ++j)

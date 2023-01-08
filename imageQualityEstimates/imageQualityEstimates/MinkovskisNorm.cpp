@@ -13,13 +13,13 @@ void MinkovskisNorm::Delete()
 	delete this;
 }
 
-float MinkovskisNorm::estimate(const cv::Mat& test)
+double MinkovskisNorm::estimate(const cv::Mat& test)
 {
 	
 	if (test.size() == masterImage_.size())
 	{
 		double const P{ 2.0 };
-		float sum{};
+		double sum{};
 		for (size_t i{}; i < masterImage_.size().width; ++i)
 		{
 			for (size_t j{}; j < masterImage_.size().height; ++j)

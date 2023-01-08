@@ -12,5 +12,5 @@ public:
         
     void setMasterImage(const cv::Mat& master) override;
     
-    float estimate(const cv::Mat& test) override;
+    double estimate(const cv::Mat& test) override;
 };

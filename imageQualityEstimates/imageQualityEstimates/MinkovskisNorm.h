@@ -10,7 +10,7 @@ public:
     MinkovskisNorm();
     void Delete();
     
-    float estimate(const cv::Mat& testImage) override;
+    double estimate(const cv::Mat& testImage) override;
     void setMasterImage(const cv::Mat& master) override;
 };
 

@@ -8,6 +8,6 @@ protected:
 public:
     PSNR();
     void Delete();
-    float estimate(const cv::Mat& test);
+    double estimate(const cv::Mat& test);
 };
 

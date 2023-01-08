@@ -25,32 +25,22 @@ int main()
         estimates.push_back(creator->estiamteCreate());
     }
 
-    /*for (const auto estiamte : estimates)
+    for (const auto estiamte : estimates)
     {
         estiamte->setMasterImage(cv::imread(parm.masterImageName, cv::IMREAD_GRAYSCALE));
     }
 
     for (const auto estiamte : estimates)
     {
-        float curentEstimate{ estiamte->estimate(cv::imread(parm.testImageName, cv::IMREAD_GRAYSCALE)) };
+        double curentEstimate{ estiamte->estimate(cv::imread(parm.testImageName, cv::IMREAD_GRAYSCALE)) };
         std::cout << curentEstimate << std::endl;
-    }*/
-
-    for (size_t i{};i< 100000;++i)
-    {
-        std::cout << i ;
     }
 
     for (const auto estiamte : estimates)
     {
         estiamte->Delete();
     }
-    //estimates.clear();
-
-    for (size_t i{}; i < 100000; ++i)
-    {
-        std::cout << i;
-    }
+    estimates.clear();
 
     std::cout << "Hello World!\n";
 }
