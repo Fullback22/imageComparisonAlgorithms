@@ -1,6 +1,7 @@
 #pragma once
 #include "MSE.h"
 #include "PSNR.h"
+#include "MinkovskisNorm.h"
 class Creator
 {
 public:
@@ -14,6 +15,12 @@ public:
 };
 
 class CreatorPsnr : public Creator
+{
+public:
+	IImageQualityEstimate* estiamteCreate() override;
+};
+
+class CreatorMinkovkisNorm : public Creator
 {
 public:
 	IImageQualityEstimate* estiamteCreate() override;

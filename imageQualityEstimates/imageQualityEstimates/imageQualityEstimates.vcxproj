@@ -144,12 +144,14 @@
   <ItemGroup>
     <ClCompile Include="Creator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MinkovskisNorm.cpp" />
     <ClCompile Include="MSE.cpp" />
     <ClCompile Include="PSNR.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Creator.h" />
     <ClInclude Include="IImageQualityEstimates.h" />
+    <ClInclude Include="MinkovskisNorm.h" />
     <ClInclude Include="MSE.h" />
     <ClInclude Include="Params.h" />
     <ClInclude Include="PSNR.h" />

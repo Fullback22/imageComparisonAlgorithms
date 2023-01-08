@@ -7,6 +7,7 @@
 
 #include "MSE.h"
 #include "PSNR.h"
+#include "MinkovskisNorm.h"
 #include "Creator.h"
 
 #include "Params.h"
@@ -15,7 +16,8 @@ int main()
     Params parm;
     CreatorMse creatorMse{};
     CreatorPsnr creatorPsnr{};
-    std::vector<Creator*> creators{ &creatorMse, &creatorPsnr };
+    CreatorMinkovkisNorm creatorMn{};
+    std::vector<Creator*> creators{ &creatorMse, &creatorPsnr, &creatorMn };
     std::list<IImageQualityEstimate*> estimates;
 
     for (const auto creator:creators)
@@ -23,7 +25,7 @@ int main()
         estimates.push_back(creator->estiamteCreate());
     }
 
-    for (const auto estiamte : estimates)
+    /*for (const auto estiamte : estimates)
     {
         estiamte->setMasterImage(cv::imread(parm.masterImageName, cv::IMREAD_GRAYSCALE));
     }
@@ -32,8 +34,23 @@ int main()
     {
         float curentEstimate{ estiamte->estimate(cv::imread(parm.testImageName, cv::IMREAD_GRAYSCALE)) };
         std::cout << curentEstimate << std::endl;
+    }*/
+
+    for (size_t i{};i< 100000;++i)
+    {
+        std::cout << i ;
     }
 
+    for (const auto estiamte : estimates)
+    {
+        estiamte->Delete();
+    }
+    //estimates.clear();
+
+    for (size_t i{}; i < 100000; ++i)
+    {
+        std::cout << i;
+    }
 
     std::cout << "Hello World!\n";
 }
