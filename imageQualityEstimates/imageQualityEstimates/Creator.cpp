@@ -14,3 +14,8 @@ IImageQualityEstimate* CreatorMinkovkisNorm::estiamteCreate()
 {
 	return static_cast<IImageQualityEstimate*>(new MinkovskisNorm());
 }
+
+IImageQualityEstimate* CreatorSsim::estiamteCreate()
+{
+	return static_cast<IImageQualityEstimate*>(new SSIM());
+}

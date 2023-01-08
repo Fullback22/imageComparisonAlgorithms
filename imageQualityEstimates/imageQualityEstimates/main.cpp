@@ -4,10 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <list>
-
-#include "MSE.h"
-#include "PSNR.h"
-#include "MinkovskisNorm.h"
 #include "Creator.h"
 
 #include "Params.h"
@@ -17,7 +13,8 @@ int main()
     CreatorMse creatorMse{};
     CreatorPsnr creatorPsnr{};
     CreatorMinkovkisNorm creatorMn{};
-    std::vector<Creator*> creators{ &creatorMse, &creatorPsnr, &creatorMn };
+    CreatorSsim creatorSsim{};
+    std::vector<Creator*> creators{ &creatorMse, &creatorPsnr, &creatorMn, &creatorSsim };
     std::list<IImageQualityEstimate*> estimates;
 
     for (const auto creator:creators)

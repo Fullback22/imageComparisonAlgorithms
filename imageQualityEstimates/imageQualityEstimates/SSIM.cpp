@@ -16,4 +16,24 @@ void SSIM::Delete()
 void SSIM::setMasterImage(const cv::Mat& master)
 {
 	master.copyTo(masterImage_);
+	mediumMaster_ = medium(master);
+	varianceMaster_ = variance(master, mediumMaster_);
+}
+
+double SSIM::estimate(const cv::Mat& test)
+{
+	if (test.size() == masterImage_.size())
+	{
+		double mediumTest{ medium(test) };
+		double varianceTest{ variance(test, mediumTest) };
+		double covariance_{ covariance(masterImage_, test, mediumMaster_, mediumTest) };
+		
+		double numerator{ (2.0 * mediumMaster_ * mediumTest + C1_) * (2 * covariance_ + C2_) };
+		double denominator{ (pow(mediumMaster_, 2 ) + pow(mediumTest, 2) + C1_) * (varianceMaster_ + varianceTest + C2_) };
+		return numerator / denominator;
+	}
+	else
+	{
+		throw "The images have different size";
+	}
 }

@@ -30,6 +30,12 @@
     <ClCompile Include="MinkovskisNorm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SSIM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathFunctionForMat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IImageQualityEstimates.h">
@@ -48,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MinkovskisNorm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SSIM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mathFunctionForMat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

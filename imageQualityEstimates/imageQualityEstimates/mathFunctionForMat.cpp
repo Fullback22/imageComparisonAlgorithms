@@ -53,7 +53,7 @@ double covariance(const cv::Mat& image1, const cv::Mat& image2, const double med
             {
                 double delta1{ image1.at<uchar>(i, j) - medium1 };
                 double delta2{ image2.at<uchar>(i, j) - medium2 };
-                sum += delta1 + delta2;
+                sum += delta1 * delta2;
             }
         }
         return sum / image1.size().area();

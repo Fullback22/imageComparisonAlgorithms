@@ -2,6 +2,7 @@
 #include "MSE.h"
 #include "PSNR.h"
 #include "MinkovskisNorm.h"
+#include "SSIM.h"
 class Creator
 {
 public:
@@ -21,6 +22,12 @@ public:
 };
 
 class CreatorMinkovkisNorm : public Creator
+{
+public:
+	IImageQualityEstimate* estiamteCreate() override;
+};
+
+class CreatorSsim : public Creator
 {
 public:
 	IImageQualityEstimate* estiamteCreate() override;
