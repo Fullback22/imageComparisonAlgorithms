@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Creator.cpp" />
+    <ClCompile Include="FastSearchSimilarImages.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mathFunctionForMat.cpp" />
     <ClCompile Include="MinkovskisNorm.cpp" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Creator.h" />
+    <ClInclude Include="FastSearchSimilarImages.h" />
     <ClInclude Include="IImageQualityEstimates.h" />
     <ClInclude Include="mathFunctionForMat.h" />
     <ClInclude Include="MinkovskisNorm.h" />

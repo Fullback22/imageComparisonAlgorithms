@@ -14,7 +14,8 @@ int main()
     CreatorPsnr creatorPsnr{};
     CreatorMinkovkisNorm creatorMn{};
     CreatorSsim creatorSsim{};
-    std::vector<Creator*> creators{ &creatorMse, &creatorPsnr, &creatorMn, &creatorSsim };
+    CreatorFssi creatorFssi{};
+    std::vector<Creator*> creators{ &creatorMse, &creatorPsnr, &creatorMn, &creatorSsim, &creatorFssi };
     std::list<IImageQualityEstimate*> estimates;
 
     for (const auto creator:creators)

@@ -19,3 +19,8 @@ IImageQualityEstimate* CreatorSsim::estiamteCreate()
 {
 	return static_cast<IImageQualityEstimate*>(new SSIM());
 }
+
+IImageQualityEstimate* CreatorFssi::estiamteCreate()
+{
+	return static_cast<IImageQualityEstimate*>(new FastSearchSimilarImages());
+}

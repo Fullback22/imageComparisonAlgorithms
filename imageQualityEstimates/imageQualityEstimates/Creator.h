@@ -3,6 +3,8 @@
 #include "PSNR.h"
 #include "MinkovskisNorm.h"
 #include "SSIM.h"
+#include "FastSearchSimilarImages.h"
+
 class Creator
 {
 public:
@@ -28,6 +30,12 @@ public:
 };
 
 class CreatorSsim : public Creator
+{
+public:
+	IImageQualityEstimate* estiamteCreate() override;
+};
+
+class CreatorFssi : public Creator
 {
 public:
 	IImageQualityEstimate* estiamteCreate() override;

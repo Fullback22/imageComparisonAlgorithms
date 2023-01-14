@@ -36,6 +36,9 @@
     <ClCompile Include="mathFunctionForMat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FastSearchSimilarImages.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IImageQualityEstimates.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mathFunctionForMat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FastSearchSimilarImages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
