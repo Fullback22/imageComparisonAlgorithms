@@ -24,3 +24,8 @@ IImageQualityEstimate* CreatorFssi::estiamteCreate()
 {
 	return static_cast<IImageQualityEstimate*>(new FastSearchSimilarImages());
 }
+
+IImageQualityEstimate* CreatorMediumHash::estiamteCreate()
+{
+	return static_cast<IImageQualityEstimate*>(new MediumHash());
+}

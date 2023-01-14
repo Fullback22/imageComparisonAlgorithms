@@ -4,6 +4,7 @@
 #include "MinkovskisNorm.h"
 #include "SSIM.h"
 #include "FastSearchSimilarImages.h"
+#include "MediumHash.h"
 
 class Creator
 {
@@ -36,6 +37,12 @@ public:
 };
 
 class CreatorFssi : public Creator
+{
+public:
+	IImageQualityEstimate* estiamteCreate() override;
+};
+
+class CreatorMediumHash : public Creator
 {
 public:
 	IImageQualityEstimate* estiamteCreate() override;

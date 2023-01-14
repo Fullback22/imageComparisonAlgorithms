@@ -39,6 +39,9 @@
     <ClCompile Include="FastSearchSimilarImages.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MediumHash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IImageQualityEstimates.h">
@@ -66,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FastSearchSimilarImages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MediumHash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
