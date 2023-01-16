@@ -16,7 +16,8 @@ int main()
     CreatorSsim creatorSsim{};
     CreatorFssi creatorFssi{};
     CreatorMediumHash creatorMediumHash{};
-    std::vector<Creator*> creators{ &creatorMse, &creatorPsnr, &creatorMn, &creatorSsim, &creatorFssi, &creatorMediumHash };
+    Creator_pHash creator_pHash{};
+    std::vector<Creator*> creators{ &creatorMse, &creatorPsnr, &creatorMn, &creatorSsim, &creatorFssi, &creatorMediumHash, &creator_pHash };
     std::list<IImageQualityEstimate*> estimates;
 
     for (const auto creator:creators)

@@ -29,3 +29,8 @@ IImageQualityEstimate* CreatorMediumHash::estiamteCreate()
 {
 	return static_cast<IImageQualityEstimate*>(new MediumHash());
 }
+
+IImageQualityEstimate* Creator_pHash::estiamteCreate()
+{
+	return static_cast<IImageQualityEstimate*>(new pHash());
+}

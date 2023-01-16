@@ -5,6 +5,7 @@
 #include "SSIM.h"
 #include "FastSearchSimilarImages.h"
 #include "MediumHash.h"
+#include "pHash.h"
 
 class Creator
 {
@@ -43,6 +44,12 @@ public:
 };
 
 class CreatorMediumHash : public Creator
+{
+public:
+	IImageQualityEstimate* estiamteCreate() override;
+};
+
+class Creator_pHash : public Creator
 {
 public:
 	IImageQualityEstimate* estiamteCreate() override;

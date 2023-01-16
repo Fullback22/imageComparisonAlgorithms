@@ -72,5 +72,7 @@ double MediumHash::estimate(const cv::Mat& test)
 	{
 		hammingDistance += abs(hashTestImage[i] - hashMasterImage_[i]);
 	}
+	delete[]hashTestImage;
+	hashTestImage = nullptr;
 	return static_cast<double>(hammingDistance);
 }
