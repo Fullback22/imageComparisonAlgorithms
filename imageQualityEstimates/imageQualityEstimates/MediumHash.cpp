@@ -12,9 +12,9 @@ cv::Mat MediumHash::prepareImageForComputeHash(const cv::Mat& image) const
 
 void MediumHash::createBinaryImage(cv::Mat& image, int const threshold) const
 {
-	for (size_t i{}; i < image.size().width; ++i)
+	for (size_t i{}; i < image.size().height; ++i)
 	{
-		for (size_t j{}; j < image.size().height; ++j)
+		for (size_t j{}; j < image.size().width; ++j)
 		{
 			if (image.at<uchar>(i, j) >= threshold)
 				image.at<uchar>(i, j) = 255;
@@ -30,11 +30,11 @@ void MediumHash::computeMediumHash(const cv::Mat& originalImage, char*& hash) co
 	if (hash != nullptr)
 		delete[]hash;
 	hash = new char[hashSize_];
-	for (size_t i{}; i < binaryImage.size().width; ++i)
+	for (size_t i{}; i < binaryImage.size().height; ++i)
 	{
-		for (size_t j{}; j < binaryImage.size().height; ++j)
+		for (size_t j{}; j < binaryImage.size().width; ++j)
 		{
-			size_t index{ i * binaryImage.size().width + j };
+			size_t index{ i * binaryImage.size().height + j };
 			if (binaryImage.at<uchar>(i, j) == 255)
 				hash[index] = 1;
 			else

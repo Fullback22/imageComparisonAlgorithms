@@ -3,9 +3,9 @@
 double medium(const cv::Mat& image)
 {
     int sum{};
-    for (size_t i{}; i < image.size().width; ++i)
+    for (size_t i{}; i < image.size().height; ++i)
     {
-        for (size_t j{}; j < image.size().height; ++j)
+        for (size_t j{}; j < image.size().width; ++j)
         {
             sum += image.at<uchar>(i, j);
         }
@@ -16,9 +16,9 @@ double medium(const cv::Mat& image)
 double variance(const cv::Mat& image, const double medium)
 {
     double sum{};
-    for (size_t i{}; i < image.size().width; ++i)
+    for (size_t i{}; i < image.size().height; ++i)
     {
-        for (size_t j{}; j < image.size().height; ++j)
+        for (size_t j{}; j < image.size().width; ++j)
         {
             double delta{ image.at<uchar>(i, j) - medium };
             sum += pow(delta, 2.0);
@@ -31,9 +31,9 @@ double variance(const cv::Mat& image)
 {
     double medium_{ medium(image) };
     double sum{};
-    for (size_t i{}; i < image.size().width; ++i)
+    for (size_t i{}; i < image.size().height; ++i)
     {
-        for (size_t j{}; j < image.size().height; ++j)
+        for (size_t j{}; j < image.size().width; ++j)
         {
             double delta{ image.at<uchar>(i, j) - medium_ };
             sum += pow(delta, 2.0);
@@ -47,9 +47,9 @@ double covariance(const cv::Mat& image1, const cv::Mat& image2, const double med
     if (image1.size() == image2.size())
     {
         double sum{};
-        for (size_t i{}; i < image1.size().width; ++i)
+        for (size_t i{}; i < image1.size().height; ++i)
         {
-            for (size_t j{}; j < image1.size().height; ++j)
+            for (size_t j{}; j < image1.size().width; ++j)
             {
                 double delta1{ image1.at<uchar>(i, j) - medium1 };
                 double delta2{ image2.at<uchar>(i, j) - medium2 };
@@ -71,9 +71,9 @@ double covariance(const cv::Mat& image1, const cv::Mat& image2)
         double medium1{ medium(image1) };
         double medium2{ medium(image2) };
         double sum{};
-        for (size_t i{}; i < image1.size().width; ++i)
+        for (size_t i{}; i < image1.size().height; ++i)
         {
-            for (size_t j{}; j < image1.size().height; ++j)
+            for (size_t j{}; j < image1.size().width; ++j)
             {
                 double delta1{ image1.at<uchar>(i, j) - medium1 };
                 double delta2{ image2.at<uchar>(i, j) - medium2 };

@@ -6,9 +6,9 @@ cv::Mat pHash::prepareImageForComputeHash(const cv::Mat& image) const
 	cv::resize(image, dctImage, dctImageSize_);
 	dctImage.convertTo(dctImage, CV_32F);
 
-	for (size_t i{}; i < dctImage.size().width; ++i)
+	for (size_t i{}; i < dctImage.size().height; ++i)
 	{
-		for (size_t j{}; j < dctImage.size().height; ++j)
+		for (size_t j{}; j < dctImage.size().width; ++j)
 			dctImage.at<float>(i, j) /= 255.0;
 	}
 
@@ -20,9 +20,9 @@ cv::Mat pHash::prepareImageForComputeHash(const cv::Mat& image) const
 	dctImage(dctRoi).copyTo(targetImage);
 	double mediumBrigthness{ 0 };
 
-	for (size_t i{}; i < dctImage.size().width; ++i)
+	for (size_t i{}; i < dctImage.size().height; ++i)
 	{
-		for (size_t j{}; j < dctImage.size().height; ++j)
+		for (size_t j{}; j < dctImage.size().width; ++j)
 			mediumBrigthness += dctImage.at<float>(i, j);
 	}
 
@@ -35,9 +35,9 @@ cv::Mat pHash::prepareImageForComputeHash(const cv::Mat& image) const
 
 void pHash::createBinaryImage(cv::Mat& image, int const threshold) const
 {
-	for (size_t i{}; i < image.size().width; ++i)
+	for (size_t i{}; i < image.size().height; ++i)
 	{
-		for (size_t j{}; j < image.size().height; ++j)
+		for (size_t j{}; j < image.size().width; ++j)
 		{
 			if (image.at<float>(i, j) >= threshold)
 				image.at<float>(i, j) = 1.0;
@@ -53,11 +53,11 @@ void pHash::compute_pHash(const cv::Mat& originalImage, char*& hash) const
 	if (hash != nullptr)
 		delete[]hash;
 	hash = new char[hashSize_];
-	for (size_t i{}; i < binaryImage.size().width; ++i)
+	for (size_t i{}; i < binaryImage.size().height; ++i)
 	{
-		for (size_t j{}; j < binaryImage.size().height; ++j)
+		for (size_t j{}; j < binaryImage.size().width; ++j)
 		{
-			size_t index{ i * binaryImage.size().width + j };
+			size_t index{ i * binaryImage.size().height + j };
 			if (binaryImage.at<float>(i, j) == 1.0)
 				hash[index] = 1;
 			else

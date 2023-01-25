@@ -24,16 +24,36 @@ int main()
     {
         estimates.push_back(creator->estiamteCreate());
     }
+    try {
+        cv::Mat buferForLoadImage{};
+        for (const auto estiamte : estimates)
+        {
+            buferForLoadImage = cv::imread(parm.masterImageName, cv::IMREAD_GRAYSCALE);
+            if (!buferForLoadImage.empty())
+                estiamte->setMasterImage(buferForLoadImage);
+            else
+            {
+                throw std::string{ "Main image is null" };
+            }
+        }
 
-    for (const auto estiamte : estimates)
-    {
-        estiamte->setMasterImage(cv::imread(parm.masterImageName, cv::IMREAD_GRAYSCALE));
+        for (const auto estiamte : estimates)
+        {
+            buferForLoadImage = cv::imread(parm.testImageName, cv::IMREAD_GRAYSCALE);
+            if (!buferForLoadImage.empty())
+            {
+                double curentEstimate{ estiamte->estimate(buferForLoadImage) };
+                std::cout << curentEstimate << std::endl;
+            }
+            else
+            {
+                throw std::string{ "Test image is null" };
+            }
+        }
     }
-
-    for (const auto estiamte : estimates)
+    catch (const std::string& error)
     {
-        double curentEstimate{ estiamte->estimate(cv::imread(parm.testImageName, cv::IMREAD_GRAYSCALE)) };
-        std::cout << curentEstimate << std::endl;
+        std::cout << error << std::endl;
     }
 
     for (const auto estiamte : estimates)
@@ -41,8 +61,6 @@ int main()
         estiamte->Delete();
     }
     estimates.clear();
-
-    std::cout << "Hello World!\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
