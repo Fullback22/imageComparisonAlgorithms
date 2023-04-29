@@ -7,8 +7,14 @@
 #include "Creator.h"
 
 #include "Params.h"
+#include "DataSetForQualityEstimate.h"
+
 int main()
 {
+    DataSetForQualityEstimate ds{};
+    ds.setFileNameWithImages("E:\\work\\test");
+    ds.setImagePaths();
+
     Params parm;
     CreatorMse creatorMse{};
     CreatorPsnr creatorPsnr{};

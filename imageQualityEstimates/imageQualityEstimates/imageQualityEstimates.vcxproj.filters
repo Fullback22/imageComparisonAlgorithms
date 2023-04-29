@@ -45,6 +45,9 @@
     <ClCompile Include="pHash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DataSetForQualityEstimate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IImageQualityEstimates.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="pHash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSetForQualityEstimate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
