@@ -18,6 +18,14 @@ void MSE::setMasterImage(const cv::Mat& master)
 	master.copyTo(masterImage_);
 }
 
+unsigned int MSE::predict(const cv::Mat& test)
+{
+	if (estimate(test) < 25.5)
+		return 1;
+	else
+		return 0;
+}
+
 double MSE::estimate(const cv::Mat& test)
 {
 	if (test.size() == masterImage_.size())

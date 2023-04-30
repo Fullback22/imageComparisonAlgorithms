@@ -76,3 +76,11 @@ double MediumHash::estimate(const cv::Mat& test)
 	hashTestImage = nullptr;
 	return static_cast<double>(hammingDistance);
 }
+
+unsigned int MediumHash::predict(const cv::Mat& test)
+{
+	if (estimate(test) < 10)
+		return 1;
+	else
+		return 0;
+}

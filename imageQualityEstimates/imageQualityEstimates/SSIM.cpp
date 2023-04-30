@@ -20,6 +20,14 @@ void SSIM::setMasterImage(const cv::Mat& master)
 	varianceMaster_ = variance(master, mediumMaster_);
 }
 
+unsigned int SSIM::predict(const cv::Mat& test)
+{
+	if (estimate(test) > 0.0)
+		return 1;
+	else
+		return 0;
+}
+
 double SSIM::estimate(const cv::Mat& test)
 {
 	if (test.size() == masterImage_.size())

@@ -12,5 +12,6 @@ public:
     
     double estimate(const cv::Mat& testImage) override;
     void setMasterImage(const cv::Mat& master) override;
+    unsigned int predict(const cv::Mat& test) override;
 };
 

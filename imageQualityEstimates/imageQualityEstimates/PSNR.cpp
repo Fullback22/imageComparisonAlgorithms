@@ -21,3 +21,11 @@ double PSNR::estimate(const cv::Mat& test)
 	double toLog{ pow(255.0, 2.0) / mse };
 	return 10.0 * log10(toLog);
 }
+
+unsigned int PSNR::predict(const cv::Mat& test)
+{
+	if (estimate(test) > 34)
+		return 1;
+	else
+		return 0;
+}

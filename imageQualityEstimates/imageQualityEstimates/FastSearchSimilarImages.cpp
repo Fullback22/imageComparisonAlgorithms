@@ -25,3 +25,11 @@ double FastSearchSimilarImages::estimate(const cv::Mat& test)
 	cv::resize(test, resizeTestImage, targetSize_);
 	return MSE::estimate(resizeTestImage);
 }
+
+unsigned int FastSearchSimilarImages::predict(const cv::Mat& test)
+{
+	if (estimate(test) < 25.5)
+		return 1;
+	else
+		return 0;
+}

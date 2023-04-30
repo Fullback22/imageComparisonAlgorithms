@@ -41,3 +41,11 @@ void MinkovskisNorm::setMasterImage(const cv::Mat& master)
 {
 	master.copyTo(masterImage_);
 }
+
+unsigned int MinkovskisNorm::predict(const cv::Mat& test)
+{
+	if (estimate(test) < 2550)
+		return 1;
+	else
+		return 0;
+}

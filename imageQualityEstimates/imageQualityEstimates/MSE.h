@@ -11,6 +11,6 @@ public:
     void Delete() override;
         
     void setMasterImage(const cv::Mat& master) override;
-    
+    unsigned int predict(const cv::Mat& test) override;
     double estimate(const cv::Mat& test) override;
 };
