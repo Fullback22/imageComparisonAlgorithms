@@ -5,8 +5,6 @@ DataSetForQualityEstimate::DataSetForQualityEstimate() :
 	imagePaths_(0),
 	numberActivImageInClass_(0)
 {
-	std::random_device rd;
-	generator.seed(rd());
 }
 
 void DataSetForQualityEstimate::setFileNameWithImages(const std::string& fileName)
@@ -85,58 +83,66 @@ void DataSetForQualityEstimate::updateDataSet()
 		numberActivImageInClass_[i] = imagePaths_[i].size() - 1;
 		if (numberActivImageInClass_[i] > 1)
 		{
-			++quantityClassesWithPairImage;
-			++quantityNotNullClasses;
+			++quantityClassesWithPairImage_;
+			++quantityNotNullClasses_;
 		}
 		else if (numberActivImageInClass_[i] > 1)
-			++quantityNotNullClasses;
-		std::shuffle(imagePaths_[i].begin(), imagePaths_[i].end(), generator);
+			++quantityNotNullClasses_;
+		std::shuffle(imagePaths_[i].begin(), imagePaths_[i].end(), generator_);
 	}
 	isEvenPair_ = true;
 }
 
 size_t DataSetForQualityEstimate::getQuantityPair() const
 {
-	return quantityPair;
+	return quantityPair_;
 }
 
 size_t DataSetForQualityEstimate::getRandomClassExept(size_t const classNumber) const
 {
-	std::vector<size_t> distribution(classNames_.size(), classNames_.size());
+	std::random_device rd1{};
+	std::mt19937 gen{ rd1() };
+	std::vector<int> distribution(classNames_.size(), classNames_.size());
 	distribution[classNumber] = 0;
-	std::discrete_distribution<size_t> classDistribution(distribution.begin(), distribution.end());
-	return classDistribution(generator);
+	std::discrete_distribution<> classDistribution(distribution.begin(), distribution.end());
+	return classDistribution(gen);
 }
 
 size_t DataSetForQualityEstimate::getRandomClass() const
 {
-	std::uniform_int_distribution<size_t> classDistribution(0, classNames_.size() - 1);
-	return classDistribution(generator);
+	std::random_device rd1{};
+	std::mt19937 gen{ rd1() };
+	std::uniform_int_distribution<> classDistribution(1,6);
+	return classDistribution(gen);
 }
 
 size_t DataSetForQualityEstimate::getNotNullRandomClassExept(size_t const classNumber) const
 {
-	std::vector<size_t> distribution(classNames_.size(), classNames_.size());
+	std::random_device rd1{};
+	std::mt19937 gen{ rd1() };
+	std::vector<int> distribution(classNames_.size(), classNames_.size());
 	distribution[classNumber] = 0;
 	for (size_t i{}; i < distribution.size(); ++i)
 	{
 		if(numberActivImageInClass_[i] < 0)
 			distribution[i] = 0;
 	}
-	std::discrete_distribution<size_t> classDistribution(distribution.begin(), distribution.end());
-	return classDistribution(generator);
+	std::discrete_distribution<> classDistribution(distribution.begin(), distribution.end());
+	return classDistribution(gen);
 }
 
 size_t DataSetForQualityEstimate::getNotNullRandomClass() const
 {
-	std::vector<size_t> distribution(classNames_.size(), classNames_.size());
+	std::random_device rd1{};
+	std::mt19937 gen{ rd1() };
+	std::vector<int> distribution(classNames_.size(), classNames_.size());
 	for (size_t i{}; i < distribution.size(); ++i)
 	{
 		if (numberActivImageInClass_[i] < 0)
 			distribution[i] = 0;
 	}
-	std::discrete_distribution<size_t> classDistribution(distribution.begin(), distribution.end());
-	return classDistribution(generator);
+	std::discrete_distribution<> classDistribution(distribution.begin(), distribution.end());
+	return classDistribution(gen);
 }
 
 size_t DataSetForQualityEstimate::getNextClassWithNotUsedImages(unsigned int const quantityNotUsedImage, size_t const startClassNumber)
@@ -156,7 +162,7 @@ size_t DataSetForQualityEstimate::getNextClassWithNotUsedImages(unsigned int con
 
 bool DataSetForQualityEstimate::thereDiferentPair()
 {
-	if (quantityNotNullClasses > 1)
+	if (quantityNotNullClasses_ > 1)
 		return true;
 	else
 		return false;
@@ -164,7 +170,7 @@ bool DataSetForQualityEstimate::thereDiferentPair()
 
 bool DataSetForQualityEstimate::thereIdenticalPair()
 {
-	if (quantityClassesWithPairImage > 0)
+	if (quantityClassesWithPairImage_ > 0)
 		return true;
 	else
 		return false;
@@ -182,11 +188,11 @@ void DataSetForQualityEstimate::getIdenticalPairImages(std::vector<std::string>&
 	--numberActivImageInClass_[classImage];
 	if (numberActivImageInClass_[classImage] == -1)
 	{
-		--quantityClassesWithPairImage;
-		--quantityNotNullClasses;
+		--quantityClassesWithPairImage_;
+		--quantityNotNullClasses_;
 	}
 	else if (numberActivImageInClass_[classImage] == 0)
-		--quantityClassesWithPairImage;
+		--quantityClassesWithPairImage_;
 }
 
 void DataSetForQualityEstimate::getDiferentPairImages(std::vector<std::string>& output)
@@ -200,12 +206,12 @@ void DataSetForQualityEstimate::getDiferentPairImages(std::vector<std::string>& 
 	--numberActivImageInClass_[secondClassImage];
 
 	if (numberActivImageInClass_[firstClassImage] == -1)
-		--quantityNotNullClasses;
+		--quantityNotNullClasses_;
 	else if (numberActivImageInClass_[firstClassImage] == 0)
-		--quantityClassesWithPairImage;
+		--quantityClassesWithPairImage_;
 
 	if (numberActivImageInClass_[secondClassImage] == -1)
-		--quantityNotNullClasses;
+		--quantityNotNullClasses_;
 	else if (numberActivImageInClass_[secondClassImage] == 0)
-		--quantityClassesWithPairImage;
+		--quantityClassesWithPairImage_;
 }

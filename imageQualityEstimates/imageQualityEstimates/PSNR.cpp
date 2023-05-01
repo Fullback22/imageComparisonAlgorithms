@@ -24,7 +24,7 @@ double PSNR::estimate(const cv::Mat& test)
 
 unsigned int PSNR::predict(const cv::Mat& test)
 {
-	if (estimate(test) > 34)
+	if (estimate(test) > 14)
 		return 1;
 	else
 		return 0;

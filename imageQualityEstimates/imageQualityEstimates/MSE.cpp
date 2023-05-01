@@ -20,7 +20,7 @@ void MSE::setMasterImage(const cv::Mat& master)
 
 unsigned int MSE::predict(const cv::Mat& test)
 {
-	if (estimate(test) < 25.5)
+	if (estimate(test) < 9753.75)
 		return 1;
 	else
 		return 0;

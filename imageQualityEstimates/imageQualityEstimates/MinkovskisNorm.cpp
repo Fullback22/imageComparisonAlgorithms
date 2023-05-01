@@ -28,7 +28,7 @@ double MinkovskisNorm::estimate(const cv::Mat& test)
 				sum += pow(delta, P);
 			}
 		}
-		sum /= (masterImage_.size().area());
+		
 		return pow(sum, 1.0 / P);
 	}
 	else
@@ -44,7 +44,7 @@ void MinkovskisNorm::setMasterImage(const cv::Mat& master)
 
 unsigned int MinkovskisNorm::predict(const cv::Mat& test)
 {
-	if (estimate(test) < 2550)
+	if (estimate(test) < 41400)
 		return 1;
 	else
 		return 0;

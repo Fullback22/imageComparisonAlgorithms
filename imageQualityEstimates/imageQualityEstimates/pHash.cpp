@@ -102,7 +102,7 @@ double pHash::estimate(const cv::Mat& test)
 
 unsigned int pHash::predict(const cv::Mat& test)
 {
-	if (estimate(test) < 10)
+	if (estimate(test) < 28)
 		return 1;
 	else
 		return 0;

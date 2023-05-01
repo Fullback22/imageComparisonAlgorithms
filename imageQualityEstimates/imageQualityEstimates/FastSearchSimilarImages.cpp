@@ -28,7 +28,7 @@ double FastSearchSimilarImages::estimate(const cv::Mat& test)
 
 unsigned int FastSearchSimilarImages::predict(const cv::Mat& test)
 {
-	if (estimate(test) < 25.5)
+	if (estimate(test) < 17.5)
 		return 1;
 	else
 		return 0;

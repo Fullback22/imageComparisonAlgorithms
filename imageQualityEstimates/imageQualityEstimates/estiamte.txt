@@ -1,0 +1,35 @@
+MSE
+Precision Identical:	0.550898
+Recall Identical:	0.915423
+Precision Diferent:	0.730159
+Recall Diferent:	0.234694
+PSNR
+Precision Identical:	0.698565
+Recall Identical:	0.726368
+Precision Diferent:	0.707447
+Recall Diferent:	0.678571
+L2
+Precision Identical:	0.68
+Recall Identical:	0.507463
+Precision Diferent:	0.59919
+Recall Diferent:	0.755102
+SSIM
+Precision Identical:	1
+Recall Identical:	0.0149254
+Precision Diferent:	0.497462
+Recall Diferent:	1
+Fast
+Precision Identical:	-nan(ind)
+Recall Identical:	0
+Precision Diferent:	0.493703
+Recall Diferent:	1
+mediumHash
+Precision Identical:	0.52381
+Recall Identical:	0.164179
+Precision Diferent:	0.497006
+Recall Diferent:	0.846939
+pHash
+Precision Identical:	0.402985
+Recall Identical:	0.134328
+Precision Diferent:	0.472727
+Recall Diferent:	0.795918

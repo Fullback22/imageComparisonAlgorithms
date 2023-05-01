@@ -26,8 +26,8 @@ private:
 	unsigned int quantityClassesWithPairImage_{};
 	unsigned int quantityNotNullClasses_{};
 	size_t quantityPair_{};
-
-	std::mt19937 generator_{};
+	std::random_device rd{};
+	std::mt19937 generator_{ rd() };
 
 	size_t getRandomClassExept(size_t const classNumber) const;
 	size_t getRandomClass() const;

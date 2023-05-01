@@ -47,7 +47,7 @@ int main()
         ds.next(imagesPath, label);
         try {
             cv::Mat buferForLoadImage{ cv::imread(imagesPath[0], cv::IMREAD_GRAYSCALE) };
-            if (!buferForLoadImage.empty())
+            if (buferForLoadImage.empty())
                 throw std::string{ "Main image is null" };
 
             cv::Size targetSize{ buferForLoadImage.size() };
@@ -55,7 +55,7 @@ int main()
                 estiamte->setMasterImage(buferForLoadImage);
             
             buferForLoadImage = cv::imread(imagesPath[1], cv::IMREAD_GRAYSCALE);
-            if (!buferForLoadImage.empty())
+            if (buferForLoadImage.empty())
                 throw std::string{ "Test image is null" };
 
             cv::resize(buferForLoadImage, buferForLoadImage, targetSize);
@@ -63,7 +63,7 @@ int main()
             for (const auto estiamte : estimates)
             {
                 double curentEstimate{ estiamte->estimate(buferForLoadImage) };
-                unsigned int predict{};
+                unsigned int predict{ estiamte->predict(buferForLoadImage) };
                 if (predict == 1)
                     ++quatityPredictIdenticalPairs[estimateNumber];
                 else
@@ -72,7 +72,7 @@ int main()
                 if (predict == 1 && label == 1)
                     ++quatityTrueIdenticalPairs[estimateNumber];
                 else if (predict == 0 && label == 0)
-                    ++quatityTrueIdenticalPairs[estimateNumber];
+                    ++quatityTrueDiferentlPairs[estimateNumber];
                 ++estimateNumber;
             }
             if (label == 1)

@@ -22,7 +22,7 @@ void SSIM::setMasterImage(const cv::Mat& master)
 
 unsigned int SSIM::predict(const cv::Mat& test)
 {
-	if (estimate(test) > 0.0)
+	if (estimate(test) > 0.5)
 		return 1;
 	else
 		return 0;
